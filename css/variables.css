@@ -1,0 +1,62 @@
+/* 디자인 시스템 변수 정의 (밝고 고급스러운 산업용 AI 리포트 스타일) */
+:root {
+  /* Color Palette - Backgrounds (웜 화이트 / 오프화이트 / 베이지) */
+  --bg-primary: #F7F5F0;
+  --bg-secondary: #F2EFE8;
+  --bg-tertiary: #ECE8DE;
+
+  /* Color Palette - Surfaces & Cards (흰색 / 밝은 웜그레이) */
+  --surface-primary: #FFFFFF;
+  --surface-secondary: #F9F7F2;
+  --surface-tertiary: #EFEADF;
+  --card-bg: #FFFFFF;
+  --card-bg-hover: #F9F7F2;
+
+  /* Text Colors (차분한 그래파이트 / 스틸그레이) */
+  --text-primary: #1F2428;
+  --text-secondary: #5D646B;
+  --text-muted: #8A8F94;
+
+  /* Borders (베이지 / 그레이) */
+  --border-color: #D8D2C7;
+  --border-color-hover: #C8C1B6;
+
+  /* Accents (Copper, Sand, Olive Gray, Graphite) */
+  --accent-copper: #B56A3A;
+  --accent-sand: #C7A76C;
+  --accent-olive: #7A8064;
+  --accent-graphite: #2F353A;
+
+  /* Gradations */
+  --grad-primary: linear-gradient(135deg, #B56A3A 0%, #C7A76C 100%);
+  --grad-dark: linear-gradient(180deg, #F7F5F0 0%, #F2EFE8 100%);
+  --grad-card: linear-gradient(135deg, #FFFFFF 0%, #F9F7F2 100%);
+
+  /* Fonts */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'Space Mono', 'Fira Code', Courier, monospace;
+  --font-display: 'Outfit', sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.85rem;
+  --space-lg: 1.25rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+
+  /* Layout */
+  --max-width: 1280px;
+  --header-height: 80px;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Shadows & Depth (네온 글로우 제거, 아주 은은한 깊이감만 유지) */
+  --shadow-sm: 0 2px 6px rgba(31, 36, 40, 0.04);
+  --shadow-md: 0 8px 20px rgba(31, 36, 40, 0.06);
+  --shadow-glow: none;
+  --text-shadow-glow: none;
+}

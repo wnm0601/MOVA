@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>MOVA: Physical AI Tech Report | 피지컬 AI 정보 가이드</title>
+  <meta name="description" content="AI가 현실 세계로 나오는 순간. 피지컬 AI의 개념, 작동 방식 및 로보틱스 기술에 관한 테크니컬 가이드 리포트.">
+  <meta name="keywords" content="피지컬 AI, Physical AI, Embodied AI, 휴머노이드, 로보틱스, 월드 모델, VLA, 디지털 트윈">
+  <meta name="author" content="MOVA Tech Report">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+
+  <!-- 4. Header & Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <a href="#hero" class="logo" id="headerLogo">
+        <span class="logo-icon"></span>
+        <span class="logo-text">MOVA</span>
+        <span class="logo-tag">ALPHA</span>
+      </a>
+      
+      <nav aria-label="메인 내비게이션">
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="메뉴 토글">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#hero" class="nav-link active" id="navLinkOverview">Overview</a></li>
+          <li><a href="#structure" class="nav-link" id="navLinkAbout">Structure</a></li>
+          <li><a href="#technologies" class="nav-link" id="navLinkTech">Technologies</a></li>
+          <li><a href="#use-cases" class="nav-link" id="navLinkCases">Use Cases</a></li>
+          <li><a href="#humanoids" class="nav-link" id="navLinkRobots">Humanoids</a></li>
+          <li><a href="#challenges" class="nav-link" id="navLinkLimits">Challenges</a></li>
+          <li><a href="#future" class="nav-link" id="navLinkFuture">Future</a></li>
+          <li><a href="#sources" class="nav-link" id="navLinkSources">Sources</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 5. Hero Section -->
+    <section class="section hero-section" id="hero">
+      <div class="grid-overlay"></div>
+      <div class="glow-overlay" style="top: -10%; right: 10%;"></div>
+      <div class="container hero-grid">
+        
+        <!-- Left Hero Content -->
+        <div class="hero-content">
+          <div class="hero-badge-container">
+            <span class="badge badge-outline-cyan">Sense</span>
+            <span class="badge badge-outline-cyan">Understand</span>
+            <span class="badge badge-outline-cyan">Plan</span>
+            <span class="badge badge-outline-cyan">Act</span>
+            <span class="badge badge-outline-cyan">Learn</span>
+            <span class="badge badge-outline-mint">Humanoid</span>
+            <span class="badge badge-outline-mint">Digital Twin</span>
+            <span class="badge badge-outline-lime">World Model</span>
+          </div>
+          
+          <h1 class="hero-title" id="heroTitle">
+            AI가 현실 세계로
+            <span class="highlight">나오는 순간</span>
+          </h1>
+          
+          <p class="hero-desc" id="heroDescription">
+            MOVA는 보고, 이해하고, 판단하고, 행동하는 피지컬 AI의 흐름을 시각적으로 보여주는 웹사이트입니다.
+          </p>
+          
+          <div class="hero-actions">
+            <a href="#about" class="btn btn-primary" id="btnLearnMore">
+              피지컬 AI 이해하기 <i data-lucide="arrow-down-right"></i>
+            </a>
+            <a href="#humanoids" class="btn btn-secondary" id="btnHumanoids">
+              휴머노이드 사례 보기 <i data-lucide="cpu"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Hero Visual (Robotics Overlay) -->
+        <div class="hero-visual-container">
+          <div class="hero-visual-grid"></div>
+          
+          <!-- Animated Connective Lines SVG -->
+          <svg class="spatial-lines" viewBox="0 0 400 500">
+            <!-- Line to Vision Input -->
+            <path d="M 50 110 L 140 110" class="spatial-line-active" />
+            <circle cx="140" cy="110" r="3" fill="var(--accent-cyan)" />
+            <!-- Line to World Model -->
+            <path d="M 330 220 L 260 170" class="spatial-line" />
+            <circle cx="260" cy="170" r="3" fill="var(--accent-blue)" />
+            <!-- Line to Motion Plan -->
+            <path d="M 40 380 L 130 310" class="spatial-line" />
+            <circle cx="130" cy="310" r="3" fill="var(--accent-blue)" />
+            <!-- Line to Safety Check -->
+            <path d="M 320 440 L 220 380" class="spatial-line-active" />
+            <circle cx="220" cy="380" r="3" fill="var(--accent-cyan)" />
+          </svg>
+
+          <!-- Robot card wrapper -->
+          <div class="robot-card" id="robotSilhouetteCard">
+            <div class="scanner-line"></div>
+            
+            <!-- SVG Technical Humanoid Silhouette -->
+            <svg viewBox="0 0 200 400" class="robot-silhouette">
+              <!-- Visor & Head -->
+              <rect x="85" y="40" width="30" height="25" rx="8" fill="rgba(107, 184, 214, 0.04)" stroke="var(--accent-cyan)" stroke-width="1.5" />
+              <line x1="88" y1="52" x2="112" y2="52" stroke="var(--accent-blue)" stroke-width="2.5" stroke-linecap="round" />
+              
+              <!-- Neck joint -->
+              <line x1="100" y1="65" x2="100" y2="75" stroke="var(--accent-blue)" stroke-width="2" />
+              
+              <!-- Chest & Spine -->
+              <path d="M70,75 L130,75 L120,135 L80,135 Z" fill="rgba(75, 141, 255, 0.04)" stroke="var(--accent-blue)" stroke-width="1.5" />
+              <rect x="85" y="140" width="30" height="22" rx="3" fill="rgba(75, 141, 255, 0.06)" stroke="var(--accent-blue)" stroke-width="1.5" />
+              
+              <!-- Pelvis -->
+              <path d="M75,167 L125,167 L115,187 L85,187 Z" fill="rgba(107, 184, 214, 0.04)" stroke="var(--accent-cyan)" stroke-width="1.5" />
+              
+              <!-- Left arm joints & cylinders -->
+              <circle cx="62" cy="82" r="5" fill="#06080B" stroke="var(--accent-cyan)" stroke-width="1.5" />
+              <line x1="62" y1="87" x2="56" y2="135" stroke="var(--accent-blue)" stroke-width="1.5" />
+              <circle cx="56" cy="135" r="4" fill="#06080B" stroke="var(--accent-cyan)" stroke-width="1.5" />
+              <line x1="56" y1="139" x2="52" y2="175" stroke="var(--accent-blue)" stroke-width="1.5" />
+              <path d="M49,175 L55,175 L52,183 Z" fill="var(--accent-blue)" />
+              
+              <!-- Right arm joints & cylinders -->
+              <circle cx="138" cy="82" r="5" fill="#06080B" stroke="var(--accent-cyan)" stroke-width="1.5" />
+              <line x1="138" y1="87" x2="144" y2="135" stroke="var(--accent-blue)" stroke-width="1.5" />
+              <circle cx="144" cy="135" r="4" fill="#06080B" stroke="var(--accent-cyan)" stroke-width="1.5" />
+              <line x1="144" y1="139" x2="148" y2="175" stroke="var(--accent-blue)" stroke-width="1.5" />
+              <path d="M145,175 L151,175 L148,183 Z" fill="var(--accent-blue)" />
+              
+              <!-- Left leg joints -->
+              <circle cx="85" cy="195" r="5" fill="#06080B" stroke="var(--accent-blue)" stroke-width="1.5" />
+              <line x1="85" y1="200" x2="80" y2="265" stroke="var(--accent-cyan)" stroke-width="1.5" />
+              <circle cx="80" cy="265" r="4" fill="#06080B" stroke="var(--accent-blue)" stroke-width="1.5" />
+              <line x1="80" y1="269" x2="76" y2="335" stroke="var(--accent-cyan)" stroke-width="1.5" />
+              <path d="M72,335 L80,335 L82,342 L72,342 Z" fill="var(--accent-cyan)" />
+              
+              <!-- Right leg joints -->
+              <circle cx="115" cy="195" r="5" fill="#06080B" stroke="var(--accent-blue)" stroke-width="1.5" />
+              <line x1="115" y1="200" x2="120" y2="265" stroke="var(--accent-cyan)" stroke-width="1.5" />
+              <circle cx="120" cy="265" r="4" fill="#06080B" stroke="var(--accent-blue)" stroke-width="1.5" />
+              <line x1="120" y1="269" x2="124" y2="335" stroke="var(--accent-cyan)" stroke-width="1.5" />
+              <path d="M120,335 L128,335 L130,342 L120,342 Z" fill="var(--accent-cyan)" />
+              
+              <!-- Spatial internal grids -->
+              <path d="M100,50 L100,165 M85,85 L115,85 M80,115 L120,115 M80,140 L120,140" stroke="rgba(107, 184, 214, 0.12)" stroke-width="1" />
+            </svg>
+          </div>
+
+          <!-- Floating telemetry boxes -->
+          <div class="floating-panel panel-1" id="panelVisionInput">
+            <span class="panel-title">Vision Input</span>
+            <span class="panel-value">
+              <span class="panel-status-dot active"></span>FPS: 60 | Conf: 99.4%
+            </span>
+          </div>
+
+          <div class="floating-panel panel-2" id="panelWorldModel">
+            <span class="panel-title">World Model</span>
+            <span class="panel-value">
+              <span class="panel-status-dot active"></span>SIMULATING (x10)
+            </span>
+          </div>
+
+          <div class="floating-panel panel-3" id="panelMotionPlan">
+            <span class="panel-title">Motion Plan</span>
+            <span class="panel-value">
+              <span class="panel-status-dot active"></span>Latency: 12ms | OK
+            </span>
+          </div>
+
+          <div class="floating-panel panel-4" id="panelSafetyCheck">
+            <span class="panel-title">Actuator Control</span>
+            <span class="panel-value">
+              <span class="panel-status-dot active"></span>Torque: 42.4Nm | Joints: 20
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. What is Physical AI Section -->
+    <section class="section about-section" id="about">
+      <div class="glow-overlay" style="bottom: -10%; left: -10%;"></div>
+      <div class="container">
+        
+        <!-- Section Header -->
+        <header class="section-header reveal-element">
+          <span class="badge badge-outline-cyan">Definition</span>
+          <h2 class="section-title" id="aboutTitle">피지컬 AI란 무엇인가?</h2>
+        </header>
+
+        <!-- Two-column main content -->
+        <div class="about-main-grid">
+          
+          <!-- Left: Narrative Introduction -->
+          <div class="about-intro reveal-element delay-1">
+            <p class="about-intro-text">
+              피지컬 AI는 AI가 <strong>물리 세계를 직접 감지(Sense)하고, 처해진 상황을 이해(Understand)하며, 안전한 행동 계획(Plan)을 수립한 뒤, 로봇이나 기계 장치를 움직여 행동(Act)</strong>하게 만드는 기술입니다.
+            </p>
+            <p class="about-intro-text">
+              텍스트나 이미지를 단순히 생성하는 기존의 생성형 AI와 달리, 피지컬 AI는 부딪히면 파손될 수 있는 실제 세계에서 물리 법칙을 준수하며 작동합니다. 따라서 <strong>엄밀한 안전 계층, 미세한 힘 조절, 정교한 3D 공간 이해, 그리고 찰나의 지연도 용납하지 않는 실시간 반응 성능</strong>이 필수적입니다.
+            </p>
+            <div class="about-intro-highlight">
+              "화면 속 디지털 답변을 생성하는 시대에서, 물리적인 직접 행동을 수행하는 시대로의 인공지능 진화"
+            </div>
+          </div>
+
+          <!-- Right: Digital AI vs Physical AI Comparison Table Card -->
+          <div class="comparison-card-container reveal-element delay-2">
+            <div class="comp-card" id="compCard">
+              <div class="comp-header">
+                <div class="comp-col-header digital">일반 생성형 AI</div>
+                <div class="comp-col-header physical">피지컬 AI</div>
+              </div>
+              
+              <div class="comp-rows">
+                <!-- Row 1: Workspace -->
+                <div class="comp-row">
+                  <span class="comp-row-label">활동 공간</span>
+                  <div class="comp-cell digital">
+                    <span class="comp-cell-title">활동 공간</span>
+                    디지털 가상 공간
+                  </div>
+                  <div class="comp-cell physical">
+                    <span class="comp-cell-title">활동 공간</span>
+                    물리적 현실 세계
+                  </div>
+                </div>
+
+                <!-- Row 2: Input -->
+                <div class="comp-row">
+                  <span class="comp-row-label">입력 데이터</span>
+                  <div class="comp-cell digital">
+                    <span class="comp-cell-title">입력 데이터</span>
+                    텍스트, 이미지, 음성 파일
+                  </div>
+                  <div class="comp-cell physical">
+                    <span class="comp-cell-title">입력 데이터</span>
+                    카메라, 라이다, 깊이 센서, 촉각, IMU
+                  </div>
+                </div>
+
+                <!-- Row 3: Output -->
+                <div class="comp-row">
+                  <span class="comp-row-label">출력 결과</span>
+                  <div class="comp-cell digital">
+                    <span class="comp-cell-title">출력 결과</span>
+                    텍스트 문장, 이미지, 코드
+                  </div>
+                  <div class="comp-cell physical">
+                    <span class="comp-cell-title">출력 결과</span>
+                    이동, 정밀 조작, 회피, 힘 조절
+                  </div>
+                </div>
+
+                <!-- Row 4: Key challenges -->
+                <div class="comp-row">
+                  <span class="comp-row-label">핵심 난점</span>
+                  <div class="comp-cell digital">
+                    <span class="comp-cell-title">핵심 난점</span>
+                    맥락 이해, 생성 품질, 환각 현상
+                  </div>
+                  <div class="comp-cell physical">
+                    <span class="comp-cell-title">핵심 난점</span>
+                    실시간 안전, 물리 법칙, 실패 극복 복구
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+        <!-- 3-stage Evolution Cards -->
+        <div class="evolution-container">
+          <h3 class="evolution-title reveal-element" id="evolutionTitle">인공지능의 3단계 진화 흐름</h3>
+          
+          <div class="evolution-grid">
+            <!-- Card 1: Digital AI -->
+            <div class="evo-card evo-card-1 reveal-element delay-1" id="evoCardDigital">
+              <span class="evo-card-num">STAGE 01</span>
+              <h4 class="evo-card-title">
+                <i data-lucide="monitor"></i> Digital AI
+              </h4>
+              <p class="evo-card-desc">
+                모니터나 노트북 화면 내부의 샌드박스에서 정보를 탐색하고, 언어나 디지털 미디어를 조작 및 생성하는 2D 평면 기반의 AI.
+              </p>
+            </div>
+
+            <!-- Connector 1 -->
+            <div class="evo-connector">
+              <i data-lucide="chevrons-right" class="evo-arrow"></i>
+            </div>
+
+            <!-- Card 2: Embodied AI -->
+            <div class="evo-card evo-card-2 reveal-element delay-2" id="evoCardEmbodied">
+              <span class="evo-card-num">STAGE 02</span>
+              <h4 class="evo-card-title">
+                <i data-lucide="bot"></i> Embodied AI
+              </h4>
+              <p class="evo-card-desc">
+                가상 시뮬레이션 환경이나 특정 로봇 하드웨어 몸체(Embodiment)에 탑재되어 주변 센서 정보를 바탕으로 환경과 직접 상호작용하기 시작하는 AI.
+              </p>
+            </div>
+
+            <!-- Connector 2 -->
+            <div class="evo-connector">
+              <i data-lucide="chevrons-right" class="evo-arrow"></i>
+            </div>
+
+            <!-- Card 3: Physical AI -->
+            <div class="evo-card evo-card-3 reveal-element delay-3" id="evoCardPhysical">
+              <span class="evo-card-num">STAGE 03</span>
+              <h4 class="evo-card-title">
+                <i data-lucide="activity"></i> Physical AI
+              </h4>
+              <p class="evo-card-desc">
+                이해와 인식을 넘어 안전 규격이 엄격하게 요구되는 다변화된 현실 물리 공간(스마트 팩토리, 실제 물류창고, 도로 등)에서 독립적이고 범용적인 실질 작업을 완수하는 AI.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- How It Works (Structure) Section -->
+    <section class="section structure-section" id="structure">
+      <div class="grid-overlay"></div>
+      <div class="glow-overlay" style="top: 10%; right: -10%;"></div>
+      <div class="container">
+        
+        <header class="section-header reveal-element">
+          <span class="badge badge-outline-cyan">Loop Process</span>
+          <h2 class="section-title">피지컬 AI는 어떻게 움직이는가?</h2>
+          <p class="section-desc">
+            피지컬 AI는 감지, 이해, 계획, 행동, 학습의 순환 구조로 작동한다. 로봇은 카메라와 센서로 현실을 보고, AI 모델은 상황을 이해하며, 제어 시스템은 모터와 손을 움직인다. 작업 결과는 다시 데이터가 되어 다음 행동을 개선한다.
+          </p>
+        </header>
+
+        <div class="loop-diagram-container">
+          <div class="loop-flow">
+            <!-- Step 1: Sense -->
+            <div class="loop-step-card step-1 reveal-element delay-1" id="stepSense">
+              <div class="step-num">01</div>
+              <div class="step-icon">
+                <i data-lucide="eye"></i>
+              </div>
+              <h3 class="step-title">Sense</h3>
+              <p class="step-desc">카메라, 라이다, 촉각, 힘 센서로 현실을 감지한다.</p>
+            </div>
+
+            <!-- Connector 1 -->
+            <div class="evo-connector">
+              <i data-lucide="chevrons-right" class="evo-arrow" style="transform: rotate(0deg); opacity: 0.4;"></i>
+            </div>
+
+            <!-- Step 2: Understand -->
+            <div class="loop-step-card step-2 reveal-element delay-2" id="stepUnderstand">
+              <div class="step-num">02</div>
+              <div class="step-icon">
+                <i data-lucide="brain"></i>
+              </div>
+              <h3 class="step-title">Understand</h3>
+              <p class="step-desc">물체, 공간, 사람, 위험 요소를 인식한다.</p>
+            </div>
+
+            <!-- Connector 2 -->
+            <div class="evo-connector">
+              <i data-lucide="chevrons-right" class="evo-arrow" style="transform: rotate(0deg); opacity: 0.4;"></i>
+            </div>
+
+            <!-- Step 3: Plan -->
+            <div class="loop-step-card step-3 reveal-element delay-3" id="stepPlan">
+              <div class="step-num">03</div>
+              <div class="step-icon">
+                <i data-lucide="map"></i>
+              </div>
+              <h3 class="step-title">Plan</h3>
+              <p class="step-desc">작업을 분해하고, 이동 경로와 힘 조절을 계획한다.</p>
+            </div>
+
+            <!-- Connector 3 -->
+            <div class="evo-connector">
+              <i data-lucide="chevrons-right" class="evo-arrow" style="transform: rotate(0deg); opacity: 0.4;"></i>
+            </div>
+
+            <!-- Step 4: Act -->
+            <div class="loop-step-card step-4 reveal-element delay-4" id="stepAct">
+              <div class="step-num">04</div>
+              <div class="step-icon">
+                <i data-lucide="hand"></i>
+              </div>
+              <h3 class="step-title">Act</h3>
+              <p class="step-desc">이동, 잡기, 놓기, 조립, 회피 같은 행동을 수행한다.</p>
+            </div>
+
+            <!-- Connector 4 -->
+            <div class="evo-connector">
+              <i data-lucide="chevrons-right" class="evo-arrow" style="transform: rotate(0deg); opacity: 0.4;"></i>
+            </div>
+
+            <!-- Step 5: Learn -->
+            <div class="loop-step-card step-5 reveal-element delay-5" id="stepLearn">
+              <div class="step-num">05</div>
+              <div class="step-icon">
+                <i data-lucide="graduation-cap"></i>
+              </div>
+              <h3 class="step-title">Learn</h3>
+              <p class="step-desc">실패 데이터와 시뮬레이션을 통해 다음 행동을 개선한다.</p>
+            </div>
+          </div>
+
+          <!-- Closed Feedback Loop Label -->
+          <div class="loop-feedback-banner reveal-element delay-6">
+            <span class="feedback-badge"><i data-lucide="refresh-cw"></i> Closed Feedback Loop</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Core Technologies Section -->
+    <section class="section tech-section" id="technologies">
+      <div class="grid-overlay"></div>
+      <div class="glow-overlay" style="bottom: 10%; left: -10%;"></div>
+      <div class="container">
+        
+        <header class="section-header reveal-element">
+          <span class="badge badge-outline-mint">Core Tech</span>
+          <h2 class="section-title">피지컬 AI를 가능하게 하는 기술</h2>
+          <p class="section-desc">
+            피지컬 AI는 단일 AI 모델만으로 작동하지 않는다. 현실을 감지하는 센서, 상황을 이해하는 모델, 행동을 계획하는 제어 시스템, 안전을 보장하는 보호 계층이 함께 작동해야 한다.
+          </p>
+        </header>
+
+        <!-- 5-card layout -->
+        <div class="tech-grid">
+          <!-- Card 1: VLA (Highlighted) -->
+          <div class="tech-card tech-highlight-card reveal-element delay-1" id="techVla">
+            <div class="tech-card-header">
+              <div class="tech-icon"><i data-lucide="cpu"></i></div>
+              <span class="badge badge-outline-cyan">VLA Model</span>
+            </div>
+            <h3 class="tech-card-title">Vision-Language-Action Model</h3>
+            <p class="tech-card-desc">
+              VLA 모델은 이미지, 언어, 행동을 하나의 모델 안에서 연결한다. 사용자의 자연어 명령과 카메라 이미지를 함께 입력받고, 로봇이 수행할 행동을 출력한다.
+            </p>
+            <div class="mini-diagram">
+              <div class="dia-node">카메라 이미지 + 사용자 명령</div>
+              <div class="dia-arrow"><i data-lucide="chevrons-right"></i></div>
+              <div class="dia-node active">VLA 모델</div>
+              <div class="dia-arrow"><i data-lucide="chevrons-right"></i></div>
+              <div class="dia-node">로봇 행동</div>
+            </div>
+          </div>
+
+          <!-- Card 2: World Model (Highlighted) -->
+          <div class="tech-card tech-highlight-card reveal-element delay-2" id="techWorldModel">
+            <div class="tech-card-header">
+              <div class="tech-icon"><i data-lucide="globe"></i></div>
+              <span class="badge badge-outline-lime">World Model</span>
+            </div>
+            <h3 class="tech-card-title">World Model</h3>
+            <p class="tech-card-desc">
+              월드 모델은 AI가 현실 세계가 어떻게 변할지 예측하도록 돕는 모델이다. 로봇이 행동하기 전에 “이렇게 움직이면 물체가 어떻게 될까?”를 시뮬레이션하는 역할을 한다.
+            </p>
+            <div class="mini-diagram">
+              <div class="dia-node">현재 상황</div>
+              <div class="dia-arrow"><i data-lucide="chevrons-right"></i></div>
+              <div class="dia-node active">예측</div>
+              <div class="dia-arrow"><i data-lucide="chevrons-right"></i></div>
+              <div class="dia-node">행동 선택</div>
+            </div>
+          </div>
+
+          <!-- Card 3: Digital Twin & Simulation -->
+          <div class="tech-card reveal-element delay-3" id="techDigitalTwin">
+            <div class="tech-card-header">
+              <div class="tech-icon"><i data-lucide="server"></i></div>
+              <span class="badge">Virtual Space</span>
+            </div>
+            <h3 class="tech-card-title">Digital Twin & Simulation</h3>
+            <p class="tech-card-desc">
+              현실에서 바로 로봇을 학습시키면 위험하고 비용이 크다. 그래서 공장, 창고, 도로, 로봇 몸체를 가상 공간에 복제한 뒤 먼저 훈련한다.
+            </p>
+            <div class="mini-diagram">
+              <div class="dia-node">현실 환경</div>
+              <div class="dia-arrow"><i data-lucide="chevrons-right"></i></div>
+              <div class="dia-node">디지털 트윈</div>
+              <div class="dia-arrow"><i data-lucide="chevrons-right"></i></div>
+              <div class="dia-node active">시뮬레이션</div>
+              <div class="dia-arrow"><i data-lucide="chevrons-right"></i></div>
+              <div class="dia-node">현실 배치</div>
+            </div>
+          </div>
+
+          <!-- Card 4: Edge Inference -->
+          <div class="tech-card reveal-element delay-4" id="techEdgeInference">
+            <div class="tech-card-header">
+              <div class="tech-icon"><i data-lucide="zap"></i></div>
+              <span class="badge">Real-Time</span>
+            </div>
+            <h3 class="tech-card-title">Edge Inference</h3>
+            <p class="tech-card-desc">
+              로봇은 클라우드 응답을 기다릴 수 없는 상황이 많다. 사람이 갑자기 지나가거나 물체가 떨어질 때 즉시 반응해야 하므로 로봇 내부에서 실시간 추론을 수행해야 한다.
+            </p>
+            <div class="mini-diagram">
+              <div class="dia-node">로봇 내부 AI 칩</div>
+              <div class="dia-arrow"><i data-lucide="chevrons-right"></i></div>
+              <div class="dia-node active">즉각 판단</div>
+              <div class="dia-arrow"><i data-lucide="chevrons-right"></i></div>
+              <div class="dia-node">안전 행동</div>
+            </div>
+          </div>
+
+          <!-- Card 5: Safety Layer (Highlighted) -->
+          <div class="tech-card tech-highlight-card reveal-element delay-5" id="techSafetyLayer">
+            <div class="tech-card-header">
+              <div class="tech-icon"><i data-lucide="shield-check"></i></div>
+              <span class="badge badge-outline-mint">Safety</span>
+            </div>
+            <h3 class="tech-card-title">Safety Layer</h3>
+            <p class="tech-card-desc">
+              피지컬 AI는 현실에서 사람과 공간에 영향을 주기 때문에 안전 계층이 필수다. 충돌 회피, 힘 제한, 비상 정지, 사람 인식, 위험 행동 필터링이 필요하다.
+            </p>
+            <div class="mini-diagram">
+              <div class="dia-node">AI 판단</div>
+              <div class="dia-arrow"><i data-lucide="chevrons-right"></i></div>
+              <div class="dia-node active">안전 필터</div>
+              <div class="dia-arrow"><i data-lucide="chevrons-right"></i></div>
+              <div class="dia-node">실제 행동</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="section usecases-section" id="use-cases">
+      <div class="grid-overlay"></div>
+      <div class="glow-overlay" style="top: 10%; right: -10%;"></div>
+      <div class="container">
+        
+        <header class="section-header reveal-element">
+          <span class="badge badge-outline-lime">Application</span>
+          <h2 class="section-title">어디에 쓰이는가?</h2>
+          <p class="section-desc">
+            피지컬 AI는 제조, 물류, 자율주행, 스마트 시설, 의료, 가정용 로봇으로 확장되고 있다. 가장 빠르게 상용화되는 곳은 환경이 통제되고 반복 작업이 많은 공장과 창고다.
+          </p>
+        </header>
+
+        <div class="usecases-grid">
+          <!-- Case 1: Manufacture (Highlighted) -->
+          <div class="usecase-card usecase-highlight-card reveal-element delay-1" id="caseManufacture">
+            <div class="usecase-header">
+              <div class="usecase-icon"><i data-lucide="factory"></i></div>
+              <span class="badge badge-outline-cyan">High</span>
+            </div>
+            <h3 class="usecase-title">제조</h3>
+            <p class="usecase-desc">자동차·전자 공장에서 부품 운반, 조립 보조, 검사 수행</p>
+          </div>
+
+          <!-- Case 2: Logistics (Highlighted) -->
+          <div class="usecase-card usecase-highlight-card reveal-element delay-2" id="caseLogistics">
+            <div class="usecase-header">
+              <div class="usecase-icon"><i data-lucide="box"></i></div>
+              <span class="badge badge-outline-cyan">High</span>
+            </div>
+            <h3 class="usecase-title">물류</h3>
+            <p class="usecase-desc">창고에서 박스, 토트, 재고를 이동하고 분류</p>
+          </div>
+
+          <!-- Case 3: Autonomous Driving -->
+          <div class="usecase-card reveal-element delay-3" id="caseDriving">
+            <div class="usecase-header">
+              <div class="usecase-icon"><i data-lucide="car"></i></div>
+              <span class="badge badge-outline-lime">Medium-High</span>
+            </div>
+            <h3 class="usecase-title">자율주행</h3>
+            <p class="usecase-desc">차량이 도로 상황을 인식하고 판단</p>
+          </div>
+
+          <!-- Case 4: Smart Space -->
+          <div class="usecase-card reveal-element delay-4" id="caseSmartSpace">
+            <div class="usecase-header">
+              <div class="usecase-icon"><i data-lucide="building"></i></div>
+              <span class="badge badge-outline-mint">Medium</span>
+            </div>
+            <h3 class="usecase-title">스마트 공간</h3>
+            <p class="usecase-desc">카메라와 센서가 시설 이상을 감지하고 운영을 최적화</p>
+          </div>
+
+          <!-- Case 5: Medical Care -->
+          <div class="usecase-card reveal-element delay-5" id="caseMedical">
+            <div class="usecase-header">
+              <div class="usecase-icon"><i data-lucide="heart-handshake"></i></div>
+              <span class="badge badge-outline-mint">Medium</span>
+            </div>
+            <h3 class="usecase-title">의료/돌봄</h3>
+            <p class="usecase-desc">보조 로봇, 수술 로봇, 재활 로봇</p>
+          </div>
+
+          <!-- Case 6: Home -->
+          <div class="usecase-card reveal-element delay-6" id="caseHome">
+            <div class="usecase-header">
+              <div class="usecase-icon"><i data-lucide="home"></i></div>
+              <span class="badge">Early</span>
+            </div>
+            <h3 class="usecase-title">가정</h3>
+            <p class="usecase-desc">정리, 물건 가져오기, 세탁물 분류 같은 생활 보조</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- Humanoid Case Studies Section -->
+    <section class="section humanoids-section" id="humanoids">
+      <div class="grid-overlay"></div>
+      <div class="glow-overlay" style="top: -10%; left: 10%;"></div>
+      <div class="container">
+        
+        <header class="section-header reveal-element">
+          <span class="badge badge-outline-copper">Case Studies</span>
+          <h2 class="section-title">휴머노이드는 피지컬 AI의 가장 상징적인 형태다</h2>
+          <p class="section-desc">
+            휴머노이드 로봇은 사람을 위해 설계된 환경에서 작동하기 위해 인간과 비슷한 형태를 가진다. 공장, 창고, 가정처럼 기존 공간을 크게 바꾸기 어려운 곳에서 활용 가능성이 크다. 다만 실제 상용화는 제한된 반복 작업부터 시작되고 있으며, 완전한 범용 로봇까지는 아직 해결해야 할 과제가 많다.
+          </p>
+        </header>
+
+        <div class="humanoids-grid">
+          <!-- Card 1 -->
+          <div class="humanoid-card reveal-element delay-1" id="h-atlas">
+            <div class="humanoid-sketch">
+              <i data-lucide="bot"></i>
+            </div>
+            <div class="humanoid-info">
+              <div class="humanoid-meta">
+                <span class="humanoid-tag tag-industry">산업용</span>
+                <span class="humanoid-label">제조, 산업 작업</span>
+              </div>
+              <h3 class="humanoid-name">Boston Dynamics Atlas</h3>
+              <p class="humanoid-feature"><strong>핵심 특징:</strong> 강한 전신 운동성, 양손 조작, 전기식 플랫폼</p>
+              <p class="humanoid-meaning"><strong>현재 의미:</strong> 연구 데모에서 산업용 제품화로 이동</p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="humanoid-card reveal-element delay-2" id="h-figure">
+            <div class="humanoid-sketch">
+              <i data-lucide="bot"></i>
+            </div>
+            <div class="humanoid-info">
+              <div class="humanoid-meta">
+                <span class="humanoid-tag tag-industry">산업용</span>
+                <span class="humanoid-label">자동차 제조, 물류</span>
+              </div>
+              <h3 class="humanoid-name">Figure AI Figure 02</h3>
+              <p class="humanoid-feature"><strong>핵심 특징:</strong> VLA, 5지 손, BMW 공장 테스트</p>
+              <p class="humanoid-meaning"><strong>현재 의미:</strong> 산업형 휴머노이드 상용화의 대표 사례</p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="humanoid-card reveal-element delay-3" id="h-digit">
+            <div class="humanoid-sketch">
+              <i data-lucide="bot"></i>
+            </div>
+            <div class="humanoid-info">
+              <div class="humanoid-meta">
+                <span class="humanoid-tag tag-logistics">물류</span>
+                <span class="humanoid-label">창고, 물류</span>
+              </div>
+              <h3 class="humanoid-name">Agility Robotics Digit</h3>
+              <p class="humanoid-feature"><strong>핵심 특징:</strong> 토트 이동, 반복 물류 작업, RaaS</p>
+              <p class="humanoid-meaning"><strong>현재 의미:</strong> 실제 현장 배치가 비교적 빠른 사례</p>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="humanoid-card reveal-element delay-4" id="h-apollo">
+            <div class="humanoid-sketch">
+              <i data-lucide="bot"></i>
+            </div>
+            <div class="humanoid-info">
+              <div class="humanoid-meta">
+                <span class="humanoid-tag tag-industry">산업용</span>
+                <span class="humanoid-label">산업, 물류, 범용 작업</span>
+              </div>
+              <h3 class="humanoid-name">Apptronik Apollo</h3>
+              <p class="humanoid-feature"><strong>핵심 특징:</strong> Google DeepMind Gemini Robotics 파트너</p>
+              <p class="humanoid-meaning"><strong>현재 의미:</strong> AI 모델과 휴머노이드 결합 사례</p>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="humanoid-card reveal-element delay-5" id="h-optimus">
+            <div class="humanoid-sketch">
+              <i data-lucide="bot"></i>
+            </div>
+            <div class="humanoid-info">
+              <div class="humanoid-meta">
+                <span class="humanoid-tag tag-general">범용</span>
+                <span class="humanoid-label">제조, 장기적으로 가정</span>
+              </div>
+              <h3 class="humanoid-name">Tesla Optimus</h3>
+              <p class="humanoid-feature"><strong>핵심 특징:</strong> Tesla 비전 AI와 제조 역량 활용</p>
+              <p class="humanoid-meaning"><strong>현재 의미:</strong> 잠재력은 크지만 자율성 검증이 중요</p>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="humanoid-card reveal-element delay-6" id="h-g1">
+            <div class="humanoid-sketch">
+              <i data-lucide="bot"></i>
+            </div>
+            <div class="humanoid-info">
+              <div class="humanoid-meta">
+                <span class="humanoid-tag tag-research">연구용</span>
+                <span class="humanoid-label">연구, 교육, 개발</span>
+              </div>
+              <h3 class="humanoid-name">Unitree G1</h3>
+              <p class="humanoid-feature"><strong>핵심 특징:</strong> 상대적으로 낮은 가격, 휴머노이드 연구 플랫폼</p>
+              <p class="humanoid-meaning"><strong>현재 의미:</strong> 피지컬 AI 실험 플랫폼 확산 가능성</p>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="humanoid-card reveal-element delay-7" id="h-neo">
+            <div class="humanoid-sketch">
+              <i data-lucide="bot"></i>
+            </div>
+            <div class="humanoid-info">
+              <div class="humanoid-meta">
+                <span class="humanoid-tag tag-home">가정용</span>
+                <span class="humanoid-label">가정용 로봇</span>
+              </div>
+              <h3 class="humanoid-name">1X NEO</h3>
+              <p class="humanoid-feature"><strong>핵심 특징:</strong> 홈 로봇, 원격 조작 기반 데이터 수집</p>
+              <p class="humanoid-meaning"><strong>현재 의미:</strong> 소비자용 휴머노이드의 가능성과 논란을 함께 보여줌</p>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="humanoid-card reveal-element delay-8" id="h-neura">
+            <div class="humanoid-sketch">
+              <i data-lucide="bot"></i>
+            </div>
+            <div class="humanoid-info">
+              <div class="humanoid-meta">
+                <span class="humanoid-tag tag-service">서비스</span>
+                <span class="humanoid-label">제조, 물류, 서비스</span>
+              </div>
+              <h3 class="humanoid-name">Neura Robotics 4NE1</h3>
+              <p class="humanoid-feature"><strong>핵심 특징:</strong> 인지형 로봇, 대규모 생산 목표</p>
+              <p class="humanoid-meaning"><strong>현재 의미:</strong> 유럽형 피지컬 AI 플랫폼 사례</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Challenges Section -->
+    <section class="section challenges-section" id="challenges">
+      <div class="grid-overlay"></div>
+      <div class="glow-overlay" style="bottom: 10%; right: -10%;"></div>
+      <div class="container">
+        
+        <header class="section-header reveal-element">
+          <span class="badge badge-outline-copper">Key Challenges</span>
+          <h2 class="section-title">데모와 현실 사이의 간격</h2>
+          <p class="section-desc">
+            피지컬 AI의 가장 큰 과제는 현실 세계의 복잡성이다. 로봇은 물체를 인식하는 것뿐 아니라 정확한 힘으로 잡고, 실패하면 복구하며, 사람 주변에서 안전하게 행동해야 한다. 따라서 실제 상용화는 화려한 영상보다 장시간 반복 작업에서의 안정성으로 판단해야 한다.
+          </p>
+        </header>
+
+        <div class="challenges-main-layout">
+          <div class="challenges-cards-grid">
+            <div class="challenge-card reveal-element delay-1">
+              <h3 class="challenge-card-title"><span class="num">01</span> 데이터 부족</h3>
+              <p class="challenge-card-desc">실제 로봇 데이터를 모으는 일은 느리고 비싸며 위험하다.</p>
+            </div>
+            <div class="challenge-card reveal-element delay-2">
+              <h3 class="challenge-card-title"><span class="num">02</span> Sim2Real 격차</h3>
+              <p class="challenge-card-desc">시뮬레이션에서 성공한 행동이 현실의 마찰, 무게, 조명, 센서 노이즈 때문에 실패할 수 있다.</p>
+            </div>
+            <div class="challenge-card reveal-element delay-3">
+              <h3 class="challenge-card-title"><span class="num">03</span> 손 조작의 어려움</h3>
+              <p class="challenge-card-desc">물체마다 모양, 질감, 무게가 달라 정교한 힘 조절이 필요하다.</p>
+            </div>
+            <div class="challenge-card reveal-element delay-4">
+              <h3 class="challenge-card-title"><span class="num">04</span> 실시간 안전성</h3>
+              <p class="challenge-card-desc">사람과 함께 일하려면 충돌 회피와 비상 정지가 필수다.</p>
+            </div>
+            <div class="challenge-card reveal-element delay-5">
+              <h3 class="challenge-card-title"><span class="num">05</span> 비용과 유지보수</h3>
+              <p class="challenge-card-desc">센서, 배터리, 모터, AI 칩, 손 구조가 모두 비싸고 복잡하다.</p>
+            </div>
+            <div class="challenge-card reveal-element delay-6">
+              <h3 class="challenge-card-title"><span class="num">06</span> 프라이버시와 책임</h3>
+              <p class="challenge-card-desc">가정이나 공공장소에서 카메라와 원격 조작이 쓰이면 개인정보 문제가 생길 수 있다.</p>
+            </div>
+          </div>
+
+          <!-- Comparison Panel -->
+          <div class="comparison-analysis-panel reveal-element delay-3">
+            <div class="analysis-column opp-col">
+              <h4 class="analysis-title"><i data-lucide="trending-up"></i> 가능성 (Opportunities)</h4>
+              <ul class="analysis-list">
+                <li><span>•</span> 반복 작업 자동화</li>
+                <li><span>•</span> 위험 작업 대체</li>
+                <li><span>•</span> 고령화 사회 대응</li>
+                <li><span>•</span> 스마트 제조 고도화</li>
+              </ul>
+            </div>
+            <div class="analysis-column chal-col">
+              <h4 class="analysis-title"><i data-lucide="alert-circle"></i> 과제 (Challenges)</h4>
+              <ul class="analysis-list">
+                <li><span>•</span> 장시간 안정성</li>
+                <li><span>•</span> 안전 인증</li>
+                <li><span>•</span> 비용 절감</li>
+                <li><span>•</span> 자율성 검증</li>
+                <li><span>•</span> 데이터와 보안 문제</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Future Outlook Section -->
+    <section class="section future-section" id="future">
+      <div class="grid-overlay"></div>
+      <div class="container">
+        
+        <header class="section-header reveal-element">
+          <span class="badge badge-outline-sand">Outlook</span>
+          <h2 class="section-title">피지컬 AI의 다음 단계</h2>
+          <p class="section-desc">
+            피지컬 AI는 먼저 공장과 창고에서 실용성을 검증하고, 이후 의료·서비스·가정으로 확장될 가능성이 높다. 앞으로의 핵심은 더 큰 AI 모델이 아니라, 더 안전하고 안정적으로 현실 세계에서 일할 수 있는 로봇 시스템이다.
+          </p>
+        </header>
+
+        <div class="future-timeline">
+          <div class="timeline-line"></div>
+          
+          <div class="timeline-item reveal-element delay-1">
+            <div class="timeline-marker"></div>
+            <div class="timeline-time">2024 – 2025</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">초기 테스트 및 VLA 고도화</h3>
+              <p class="timeline-desc">VLA 모델, 휴머노이드 데모, 초기 공장 테스트 확대가 진행되고 있습니다.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal-element delay-2">
+            <div class="timeline-marker"></div>
+            <div class="timeline-time">2026 – 2027</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">제한된 상용화 시작</h3>
+              <p class="timeline-desc">제조·물류 현장의 제한된 반복 작업 위주로 상용화 배치가 늘어날 가능성이 큽니다.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal-element delay-3">
+            <div class="timeline-marker"></div>
+            <div class="timeline-time">2028 – 2030</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">산업 전반의 고도화</h3>
+              <p class="timeline-desc">더 많은 산업 현장으로 확장되며, 디지털 트윈 기반 가상 공간 훈련이 고도화될 수 있습니다.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item reveal-element delay-4">
+            <div class="timeline-marker"></div>
+            <div class="timeline-time">2030 이후</div>
+            <div class="timeline-content">
+              <h3 class="timeline-title">가정과 공공 영역으로 확장</h3>
+              <p class="timeline-desc">자율성 검증과 비용 혁신을 거쳐 가정·돌봄·공공 서비스 영역으로 점진적으로 확장될 전망입니다.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Sources / References Section -->
+    <section class="section sources-section" id="sources">
+      <div class="container">
+        
+        <header class="section-header reveal-element">
+          <span class="badge badge-outline-graphite">Documentation</span>
+          <h2 class="section-title">Sources / References</h2>
+        </header>
+
+        <div class="sources-list-container reveal-element delay-1">
+          <ul class="sources-list">
+            <li>
+              <span class="source-category">NVIDIA</span>
+              <span class="source-content">Physical AI / Robotics / Cosmos (<a href="https://www.nvidia.com/en-us/deep-learning-ai/solutions/physical-ai/" target="_blank" rel="noopener">공식 자료 확인</a>)</span>
+            </li>
+            <li>
+              <span class="source-category">Google DeepMind</span>
+              <span class="source-content">RT-2, Gemini Robotics (<a href="https://deepmind.google/discover/blog/rt-2-new-model-translates-vision-and-language-into-action/" target="_blank" rel="noopener">공식 자료 확인</a>)</span>
+            </li>
+            <li>
+              <span class="source-category">Physical Intelligence</span>
+              <span class="source-content">π0 Model (<a href="https://www.physicalintelligence.company/pi0" target="_blank" rel="noopener">공식 자료 확인</a>)</span>
+            </li>
+            <li>
+              <span class="source-category">Boston Dynamics</span>
+              <span class="source-content">Atlas Robot (<a href="https://bostondynamics.com/atlas/" target="_blank" rel="noopener">공식 자료 확인</a>)</span>
+            </li>
+            <li>
+              <span class="source-category">Figure AI</span>
+              <span class="source-content">Figure 02 (<a href="https://www.figure.ai/" target="_blank" rel="noopener">공식 자료 확인</a>)</span>
+            </li>
+            <li>
+              <span class="source-category">Agility Robotics</span>
+              <span class="source-content">Digit (<a href="https://agilityrobotics.com/" target="_blank" rel="noopener">공식 자료 확인</a>)</span>
+            </li>
+            <li>
+              <span class="source-category">Apptronik</span>
+              <span class="source-content">Apollo (<a href="https://apptronik.com/" target="_blank" rel="noopener">공식 자료 확인</a>)</span>
+            </li>
+            <li>
+              <span class="source-category">Tesla</span>
+              <span class="source-content">Optimus (<a href="https://www.tesla.com/optimus" target="_blank" rel="noopener">공식 자료 확인</a>)</span>
+            </li>
+            <li>
+              <span class="source-category">Unitree</span>
+              <span class="source-content">G1 platform (<a href="https://www.unitree.com/g1" target="_blank" rel="noopener">공식 자료 확인</a>)</span>
+            </li>
+            <li>
+              <span class="source-category">1X Technologies</span>
+              <span class="source-content">1X NEO (<a href="https://www.1x.tech/neo" target="_blank" rel="noopener">공식 자료 확인</a>)</span>
+            </li>
+            <li>
+              <span class="source-category">Neura Robotics</span>
+              <span class="source-content">4NE1 platform (공식 자료 확인 필요)</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo">MOVA</span>
+        <span class="footer-tagline">Intelligence That Moves</span>
+        <p class="footer-desc">
+          현실 세계를 감지, 이해, 계획, 행동하는 피지컬 AI(Physical AI)의 작동 원리와 핵심 기술, 그리고 휴머노이드 사례를 시각적으로 전달하는 정보 가이드 리포트입니다.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <h4 class="footer-title">Navigation</h4>
+        <ul>
+          <li><a href="#hero">Overview</a></li>
+          <li><a href="#about">What is Physical AI</a></li>
+          <li><a href="#structure">How It Works</a></li>
+          <li><a href="#technologies">Core Tech</a></li>
+          <li><a href="#use-cases">Use Cases</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4 class="footer-title">Details</h4>
+        <ul>
+          <li><a href="#humanoids">Humanoids</a></li>
+          <li><a href="#challenges">Challenges</a></li>
+          <li><a href="#future">Future Outlook</a></li>
+          <li><a href="#sources">Sources / References</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 MOVA Tech Report. Built with HTML / Vanilla CSS / JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" class="scroll-top-btn" aria-label="맨 위로 이동">UP</button>
+
+  <!-- Lucide Icons & Script Bundle -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    // Lucide 아이콘 초기화
+    lucide.createIcons();
+  </script>
+  <script src="js/main.js"></script>
+</body>
+</html>

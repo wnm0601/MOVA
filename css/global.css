@@ -1,0 +1,377 @@
+/* Google Fonts 로드 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+
+/* CSS Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color-hover);
+  border-radius: 3px;
+  border: 1px solid var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-copper);
+}
+
+/* Typography Defaults */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+.section {
+  padding: var(--space-xxl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Grids Background Pattern - 연한 샌드/그레이로 오버레이 */
+.grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(200, 193, 182, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 193, 182, 0.15) 1px, transparent 1px);
+  background-size: 60px 60px;
+  background-position: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Glow 오버레이를 웜 샌드 라이팅으로 변환 */
+.glow-overlay {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(199, 167, 108, 0.08) 0%, transparent 70%);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+/* Gradient Text - 카퍼와 샌드 그라데이션 */
+.text-glow-gradient {
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Buttons (카퍼 / 그래파이트 기반) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  gap: var(--space-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--accent-copper);
+  color: #ffffff;
+  border: 1px solid var(--accent-copper);
+  box-shadow: 0 4px 10px rgba(181, 106, 58, 0.1);
+}
+
+.btn-primary:hover {
+  background: #a05b30;
+  border-color: #a05b30;
+  box-shadow: 0 6px 14px rgba(181, 106, 58, 0.2);
+  transform: translateY(-1.5px);
+}
+
+.btn-secondary {
+  background: var(--surface-primary);
+  color: var(--accent-graphite);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-secondary);
+  border-color: var(--border-color-hover);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+}
+
+/* Badges & Tags (기존 HTML 구조 유지, 스타일만 샌드/카퍼/올리브 톤으로) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.6rem;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border: 1px solid var(--border-color);
+  background: var(--surface-primary);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.badge-outline-cyan {
+  border-color: rgba(181, 106, 58, 0.25);
+  background: rgba(181, 106, 58, 0.03);
+  color: var(--accent-copper);
+}
+
+.badge-outline-cyan:hover {
+  border-color: rgba(181, 106, 58, 0.5);
+}
+
+.badge-outline-mint {
+  border-color: rgba(122, 128, 100, 0.25);
+  background: rgba(122, 128, 100, 0.03);
+  color: var(--accent-olive);
+}
+
+.badge-outline-mint:hover {
+  border-color: rgba(122, 128, 100, 0.5);
+}
+
+.badge-outline-lime {
+  border-color: rgba(199, 167, 108, 0.25);
+  background: rgba(199, 167, 108, 0.03);
+  color: var(--accent-sand);
+}
+
+.badge-outline-lime:hover {
+  border-color: rgba(199, 167, 108, 0.5);
+}
+
+/* Premium Card Styles (흰색 카드 + 베이지 보더 + 은은한 depth) */
+.glow-card {
+  background: var(--surface-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.glow-card:hover {
+  border-color: var(--accent-copper);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Section Header style */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-xxl);
+  position: relative;
+  z-index: 10;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.section-desc {
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --space-xxl: 2.5rem;
+    --space-xl: 1.5rem;
+  }
+  .section {
+    padding: var(--space-xxl) 0;
+  }
+  .section-title {
+    font-size: 1.6rem;
+  }
+  .section-desc {
+    font-size: 0.95rem;
+  }
+}
+
+/* ==========================================================================
+   Anchor Offsets for Header Height
+   ========================================================================== */
+section, .section, #hero, #about, #structure, #technologies, #use-cases, #humanoids, #challenges, #future, #sources {
+  scroll-margin-top: 90px;
+}
+
+/* ==========================================================================
+   Scroll Reveal Animation Foundation
+   ========================================================================== */
+.reveal-element {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-element.reveal-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delays for staggered card entry animations */
+.delay-1 { transition-delay: 0.05s; }
+.delay-2 { transition-delay: 0.1s; }
+.delay-3 { transition-delay: 0.15s; }
+.delay-4 { transition-delay: 0.2s; }
+.delay-5 { transition-delay: 0.25s; }
+.delay-6 { transition-delay: 0.3s; }
+.delay-7 { transition-delay: 0.35s; }
+.delay-8 { transition-delay: 0.4s; }
+
+/* ==========================================================================
+   Scroll to Top (UP) Button Styles
+   ========================================================================== */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: var(--surface-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  z-index: 99;
+  transition: opacity var(--transition-normal), transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal), visibility var(--transition-normal);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-top-btn:hover {
+  border-color: var(--accent-copper);
+  color: var(--accent-copper);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.scroll-top-btn:focus-visible {
+  outline: 2px solid var(--accent-copper);
+  outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+  .scroll-top-btn {
+    bottom: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-top-btn {
+    transition: none;
+  }
+  .scroll-top-btn:hover {
+    transform: none;
+  }
+}
+
