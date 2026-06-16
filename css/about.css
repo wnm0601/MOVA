@@ -525,14 +525,14 @@
 .mini-diagram {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: var(--space-xs);
+  row-gap: 0.4rem;
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   margin-top: auto;
   border-top: 1px solid rgba(0, 0, 0, 0.04);
   padding-top: var(--space-md);
-  overflow-x: auto;
-  scrollbar-width: none; /* Firefox */
 }
 
 .mini-diagram::-webkit-scrollbar {
@@ -542,7 +542,7 @@
 .dia-node {
   background: var(--surface-secondary);
   border: 1px solid var(--border-color);
-  padding: 0.3rem 0.55rem;
+  padding: 0.25rem 0.45rem;
   border-radius: 3px;
   color: var(--text-secondary);
   white-space: nowrap;
